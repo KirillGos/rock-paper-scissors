@@ -4,44 +4,61 @@ const getComputerChoice = () => {
     let randomSelection = Math.floor(Math.random() * 3);
     return options[randomSelection];
 }
+   
+  
+   const result = document.querySelector('.result');
+
 
 //GAME CONDITIONS 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
-        return `ROW. (Your answer = ${playerSelection}, computer = ${computerSelection})`;
+       result.textContent = `ROW.  ${playerSelection} ${computerSelection}` ;
+      // result.appendChild(text);
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        return "You lost Paper covers rock";
+        result.textContent = "You lost Paper covers rock";
     }
       else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        return "You won Rock beats scissors"
+        result.textContent = "You won Rock beats scissors"; 
     }
     else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        return "You won Scissors cuts paper";
+        result.textContent = "You won Scissors cuts paper" ;
     }
     else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        return "You lost Rock beats scissors";
+        result.textContent ="You lost Rock beats scissors" ;
     }
     else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        return  "You won Paper covers rock";
+        result.textContent = "You won Paper covers rock"  ;
     }
     else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        return 'You lost Scissors cuts paper';
-    }
-     else {
-        return 'Enter rock,paper or scissors';
+        result.textContent ='You lost Scissors cuts paper'  ;
     }
   }
 
-    const playerSelection = "rock";
-    const computerSelection = getComputerChoice();
-
+  //Add event listeners to the buttons
+   
+  const buttons = document.querySelectorAll('button');
+  const buttonsArr = Array.from(buttons);
+  
+  document.addEventListener('click', function(e){
+    if(e.target.tagName=="BUTTON"){
+     if(e.target.className == 'rock') {
+        playRound(e.target.className, getComputerChoice());
+     } else if (e.target.className == 'paper') {
+        playRound(e.target.className, getComputerChoice());
+     } else if (e.target.className == 'scissors') {
+        playRound(e.target.className, getComputerChoice());
+     }
+    }   
+  })
+   
 //Play the game five times and see who is the winner computer or you
-    let computerScore = 0;
-    let yourScore = 0;
+  
 
-function game() {
+function game(button) {
+      let computerScore = 0;
+   let yourScore = 0;
     for (let i = 0; i < 5; i++) {
-        let result = playRound(prompt('Enter paper, scissors or rock').trim().toLowerCase(), getComputerChoice());
+        let result = playRound(button, getComputerChoice());
            
             if (result  === 'You won Rock beats scissors' ||
                 result === "You won Scissors cuts paper" || 
@@ -63,6 +80,4 @@ function game() {
         }
 }
 
-      game()
-
-  
+    
