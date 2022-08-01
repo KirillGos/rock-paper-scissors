@@ -5,35 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<style>
-   .buttons button {
-        width: 40vh;
-        height: 40vh;
-    }
-</style>
-    <div class="buttons">
-        <button class="scissors">scissors</button>
-        <button class="paper"  >paper</button>
-        <button class="rock" >rock</button>
-    </div>
 
-     <div class="you">
-                <h2>Your Result:</h2>
-                <p></p>
-            </div>
-             <div class="computer">
-                <h2>Computer Result:</h2>
-                <p></p>
-            </div>
-    <div class="result">
-           
-           
+    <div class="main-header">
+        <h1>Rock Paper Scissors Game</h1>
     </div>
-    <button id="reset">
-        reset
-    </button>
+    <div class="container">
+        <h2 id="buttons-header">Click on paper, scissors or rock</h2>
+        <div class="buttons">
+            <button class="scissors">scissors</button>
+            <button class="paper"  >paper</button>
+            <button class="rock" >rock</button>
+        </div>
+        <div class="score-points">
+              <div class="you">
+                  <h2>Your Result: <span>0</span></h2>
+              </div>
+              <div class="computer">
+                   <h2>Computer Result: <span>0</span> </h2>  
+             </div>
+        </div>
+        
+
+        <div class="result">
+            <li id="result-li">The result</li>
+        </div>
+
+        <button id="reset">Play Again </button>
+    </div>
     <script src="script.js"></script>
 
 </body>
